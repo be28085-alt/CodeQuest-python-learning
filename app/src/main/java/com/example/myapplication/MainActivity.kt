@@ -1,19 +1,13 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,38 +16,80 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        setupClickListeners()
+    }
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+    private fun setupClickListeners() {
+        // Botón de Login
+        binding.loginButton.setOnClickListener {
+            if (validateLoginForm()) {
+                loginUser()
+            }
+        }
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
+        // Botón "Regístrate"
+        binding.registerLinkButton.setOnClickListener {
+            navigateToRegister()
+        }
+
+        // Botón de Google
+        binding.googleButton.setOnClickListener {
+            signInWithGoogle()
+        }
+
+        // Botón de Facebook (nuevo)
+        binding.facebookButton.setOnClickListener {
+            signInWithFacebook()
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
+    private fun validateLoginForm(): Boolean {
+        val email = binding.emailEditText.text.toString().trim()
+        val password = binding.passwordEditText.text.toString()
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+        var isValid = true
+
+        if (email.isEmpty()) {
+            binding.emailInputLayout.error = "El email es requerido"
+            isValid = false
+        } else {
+            binding.emailInputLayout.error = null
         }
+
+        if (password.isEmpty()) {
+            binding.passwordInputLayout.error = "La contraseña es requerida"
+            isValid = false
+        } else {
+            binding.passwordInputLayout.error = null
+        }
+
+        return isValid
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+    private fun loginUser() {
+        val email = binding.emailEditText.text.toString().trim()
+
+        // Aquí iría tu lógica de login
+        Toast.makeText(this, "Login exitoso: $email", Toast.LENGTH_SHORT).show()
+
+        // Después del login exitoso, podrías navegar a otra actividad
+        // val intent = Intent(this, HomeActivity::class.java)
+        // startActivity(intent)
+        // finish()
+    }
+
+    private fun signInWithGoogle() {
+        // Aquí iría la integración con Google Sign-In
+        Toast.makeText(this, "Iniciar con Google", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun signInWithFacebook() {
+        // Aquí iría la integración con Facebook Sign-In
+        Toast.makeText(this, "Iniciar con Facebook", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigateToRegister() {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 }

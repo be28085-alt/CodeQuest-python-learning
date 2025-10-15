@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph" app:startDestination="@id/registerFragment"> <!-- O el fragmento con el que desees iniciar -->
+
+    <fragment android:id="@+id/registerFragment" android:name="com.example.myapplication.RegisterFragment"
+        android:label="fragment_register" tools:layout="@layout/fragment_register">
+        <!-- Puedes definir una acción para navegar a mainFragment si lo prefieres -->
+    </fragment>
+
+    <!-- AÑADE ESTE BLOQUE SI NO EXISTE -->
+    <fragment android:id="@+id/mainFragment" android:name="com.example.myapplication.MainFragment"
+        android:label="fragment_main" tools:layout="@layout/fragment_main" />
+
+</navigation>
+    

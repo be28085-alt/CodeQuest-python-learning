@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Colores básicos -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#FF9E9E9E</color>
+
+    <!-- Colores para botones -->
+    <color name="orange_primary">#FFA61F</color>      <!-- Naranja -->
+    <color name="blue_facebook">#FF1877F2</color>     <!-- Azul Facebook -->
+
+
+
 </resources>
