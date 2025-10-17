@@ -69,13 +69,9 @@ class MainActivity : AppCompatActivity() {
     private fun loginUser() {
         val email = binding.emailEditText.text.toString().trim()
 
-        // Aquí iría tu lógica de login
         Toast.makeText(this, "Login exitoso: $email", Toast.LENGTH_SHORT).show()
 
-        // Después del login exitoso, podrías navegar a otra actividad
-        // val intent = Intent(this, HomeActivity::class.java)
-        // startActivity(intent)
-        // finish()
+
     }
 
     private fun signInWithGoogle() {

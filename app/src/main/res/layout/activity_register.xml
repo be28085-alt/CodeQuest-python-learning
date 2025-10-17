@@ -159,19 +159,21 @@
         </RelativeLayout>
 
         <!-- Botón Facebook (AZUL) -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/facebookButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="continuar con Facebook"
-            android:textSize="14sp"
-            android:backgroundTint="@color/blue_facebook"
-            android:textColor="@color/white"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp"
-            style="@style/Widget.Material3.Button" />
 
         <!-- Botón Google (BLANCO con borde) -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/facebookButton"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/blue_facebook"
+            android:padding="16dp"
+            android:text="continuar con Facebook"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/googleButton"
             android:layout_width="match_parent"
